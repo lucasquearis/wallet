@@ -1,12 +1,31 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { PropTypes } from 'prop-types';
+import { walletAction } from '../actions';
 
 class Wallet extends React.Component {
+  constructor() {
+    super();
+    this.fetchAPI = this.fetchAPI.bind(this);
+  }
+
+  componentDidMount() {
+    this.fetchAPI();
+  }
+
+  async fetchAPI() {
+    const { fetchMoedas } = this.props;
+    const API_URL = 'https://economia.awesomeapi.com.br/json/all';
+    const response = await fetch(API_URL);
+    const data = await response.json();
+    Object.values(data).forEach((moeda) => fetchMoedas(moeda));
+  }
+
   render() {
-    const { email } = this.props;
+    const { email, currencies } = this.props;
     const pagamento = ['Dinheiro', 'Cartão de Crédito', 'Cartão de Débito'];
     const tag = ['Alimentação', 'Lazer', 'Trabalho', 'Transporte', 'Saúde'];
+    const filterMoedas = currencies.filter((moeda) => moeda.codein !== 'BRLT');
     return (
       <>
         <header>
@@ -29,9 +48,10 @@ class Wallet extends React.Component {
           <label htmlFor="moeda">
             Moeda
             <select id="moeda">
-              <option>
-                BRL
-              </option>
+              {
+                filterMoedas
+                  .map((moeda, index) => <option key={ index }>{moeda.code}</option>)
+              }
             </select>
           </label>
           <label htmlFor="metodo-pagamento">
@@ -55,10 +75,15 @@ class Wallet extends React.Component {
 
 const mapStateToProps = (state) => ({
   email: state.user.email,
+  currencies: state.wallet.currencies,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  fetchMoedas: (api) => dispatch(walletAction(api)),
 });
 
 Wallet.propTypes = {
   email: PropTypes.string,
 }.isRequired;
 
-export default connect(mapStateToProps)(Wallet);
+export default connect(mapStateToProps, mapDispatchToProps)(Wallet);
