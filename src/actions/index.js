@@ -1,9 +1,10 @@
 // Coloque aqui suas actions
 export const LOGIN_USER = 'LOGIN_USER';
 
-export function userLogin(task) {
+export function userLogin(state) {
   return {
     type: LOGIN_USER,
-    task,
+    email: state.email,
+    password: state.password,
   };
 }

@@ -1,14 +1,16 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom'
 import { userLogin } from '../actions';
 
 class Login extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       email: '',
       password: '',
     };
+    this.handleClick = this.handleClick.bind(this);
     this.handleChange = this.handleChange.bind(this);
   }
 
@@ -40,8 +42,10 @@ class Login extends React.Component {
     return password.length >= maxCaracters;
   }
 
-  goTo() {
-    window.location = '/carteira';
+  handleClick() {
+    const { email, password } = this.state;
+    const { setNewTaskToStore } = this.props;
+    setNewTaskToStore({ email, password });
   }
 
   render() {
@@ -67,21 +71,23 @@ class Login extends React.Component {
             value={ password }
           />
         </label>
-        <button
-          type="button"
-          disabled={ !this.checkLogin() }
-          onClick={ this.goTo }
-        >
-          Entrar
-        </button>
+        <Link to="/carteira">
+          <button
+            type="button"
+            disabled={ !this.checkLogin() }
+            onClick={ this.handleClick }
+          >
+            Entrar
+          </button>
+        </Link>
       </fieldset>
     );
   }
 }
 
 const mapStateToProps = (state) => ({
-  email: state.user.user.email,
-  password: state.user.user.password,
+  email: state.user.email,
+  password: state.user.password,
 });
 
 const mapDispatchToProps = (dispatch) => ({

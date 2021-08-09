@@ -2,10 +2,8 @@
 import { LOGIN_USER } from '../actions';
 
 const INITIAL_STATE = {
-  user: {
-    email: '',
-    password: '',
-  },
+  email: '',
+  password: '',
 };
 
 function user(state = INITIAL_STATE, action) {
@@ -13,11 +11,11 @@ function user(state = INITIAL_STATE, action) {
   case LOGIN_USER:
     return {
       ...state,
-      email: state.user.email,
-      password: state.user.password,
+      email: action.email,
+      password: action.password,
     };
   default:
-    return state;
+    return { ...state };
   }
 }
 
