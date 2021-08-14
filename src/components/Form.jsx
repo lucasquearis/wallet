@@ -8,10 +8,10 @@ class Form extends Component {
   constructor() {
     super();
     this.state = {
-      valor: 0,
-      descricao: '',
-      moeda: 'USD',
-      pagamento: 'Dinheiro',
+      value: 0,
+      description: '',
+      currency: 'USD',
+      method: 'Dinheiro',
       tag: 'Alimentação',
     };
     this.handleChange = this.handleChange.bind(this);
@@ -24,47 +24,45 @@ class Form extends Component {
 
   handleChange({ target }) {
     const { name, value } = target;
-    this.setState((state) => ({
-      ...state,
+    const { successApi } = this.props;
+    this.setState((prevState) => ({
+      ...prevState,
       [name]: value,
+      exchangeRates: successApi,
     }));
   }
 
   render() {
-    const pagamento = ['Dinheiro', 'Cartão de Crédito', 'Cartão de Débito'];
+    const pagamento = ['Dinheiro', 'Cartão de crédito', 'Cartão de débito'];
     const tag = ['Alimentação', 'Lazer', 'Trabalho', 'Transporte', 'Saúde'];
-    const { isLoading, currencies } = this.props;
-    const currenciesFilter = currencies.filter((moeda) => moeda !== 'USDT');
-    if (isLoading) {
-      return (<h1>Carregando...</h1>);
-    }
+    const { currencies } = this.props;
     return (
       <fieldset>
         <label
-          htmlFor="valor"
+          htmlFor="value"
         >
-          Valor
-          <input name="valor" onChange={ this.handleChange } id="valor" type="number" />
+          Valor:
+          <input name="value" onChange={ this.handleChange } id="value" type="number" />
         </label>
-        <label htmlFor="descricao">
-          Descrição
+        <label htmlFor="description">
+          Descrição:
           <input
-            name="descricao"
+            name="description"
             onChange={ this.handleChange }
-            id="descricao"
+            id="description"
             type="text"
           />
         </label>
-        <label htmlFor="moeda">
-          Moeda
-          <select name="moeda" onChange={ this.handleChange } id="moeda">
-            {currenciesFilter
+        <label htmlFor="currency">
+          Moeda:
+          <select name="currency" onChange={ this.handleChange } id="currency">
+            {currencies
               .map((moeda, index) => <option key={ index }>{moeda}</option>)}
           </select>
         </label>
-        <label htmlFor="metodo-pagamento">
+        <label htmlFor="method">
           Método de pagamento
-          <select name="pagamento" onChange={ this.handleChange } id="metodo-pagamento">
+          <select name="method" onChange={ this.handleChange } id="method">
             {pagamento
               .map((item, index) => <option key={ index }>{item}</option>)}
           </select>
@@ -89,6 +87,7 @@ Form.propTypes = {
 const mapStateToProps = (state) => ({
   isLoading: state.wallet.isLoading,
   currencies: state.wallet.currencies,
+  successApi: state.wallet.successApi,
 });
 
 const mapDispatchToProps = (dispatch) => ({
