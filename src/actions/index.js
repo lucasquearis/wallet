@@ -5,6 +5,7 @@ export const GET_API = 'GET_API';
 export const GET_API_SUCCESS = 'GET_API_SUCCESS';
 export const GET_API_ERROR = 'GET_API_ERROR';
 export const UPDATE_EXPENSES = 'UPDATE_EXPENSES';
+export const DELETE_EXPENSE = 'DELETE_EXPENSE';
 
 export function userLogin(state) {
   return {
@@ -44,6 +45,13 @@ export function updateExpenses(state) {
   return {
     type: UPDATE_EXPENSES,
     expenses: state,
+  };
+}
+
+export function deleteExpenses(id) {
+  return {
+    type: DELETE_EXPENSE,
+    id,
   };
 }
 
