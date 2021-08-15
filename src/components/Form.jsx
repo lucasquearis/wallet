@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { PropTypes } from 'prop-types';
-import { fetchAPI } from '../actions';
+import { fetchAPI, editExpense, editForm } from '../actions';
 import FormButton from './FormInputs/FormButton';
 import FormValue from './FormInputs/FormValue';
 import FormDescription from './FormInputs/FormDescription';
@@ -9,26 +9,34 @@ import FormCurrency from './FormInputs/FormCurrency';
 import FormMethod from './FormInputs/FormMethod';
 import FormTag from './FormInputs/FormTag';
 
+const INITIAL_STATE = {
+  value: 0,
+  description: '',
+  currency: 'USD',
+  method: 'Dinheiro',
+  tag: 'Alimentação',
+};
 class Form extends Component {
   constructor() {
     super();
-    this.state = {
-      value: 0,
-      description: '',
-      currency: 'USD',
-      method: 'Dinheiro',
-      tag: 'Alimentação',
-      id: 0,
-    };
+    this.state = INITIAL_STATE;
     this.handleChange = this.handleChange.bind(this);
     this.renderForm = this.renderForm.bind(this);
     this.handleClick = this.handleClick.bind(this);
     this.editButton = this.editButton.bind(this);
+    this.updateExpense = this.updateExpense.bind(this);
   }
 
   componentDidMount() {
     const { fetchMoedas } = this.props;
     fetchMoedas();
+  }
+
+  componentDidUpdate() {
+    const { editable } = this.props;
+    if (editable) {
+      this.editButton();
+    }
   }
 
   handleChange({ target }) {
@@ -44,27 +52,27 @@ class Form extends Component {
   handleClick() {
     const { fetchMoedas } = this.props;
     fetchMoedas(this.state);
-    this.setState({
-      value: 0,
-      description: '',
-      currency: 'USD',
-      method: 'Dinheiro',
-      tag: 'Alimentação',
-      id: 0,
-    });
+    this.setState(INITIAL_STATE);
+  }
+
+  updateExpense() {
+    const { edit, setBoolean, editFormBoolean } = this.props;
+    edit(this.state);
+    setBoolean(!editFormBoolean);
+    this.setState(INITIAL_STATE);
   }
 
   editButton() {
-    const { expenses, id: idRedux } = this.props;
-    const objSelected = expenses.find((item) => item.id === idRedux);
-    const { value, description, currency, method, tag, id } = objSelected;
+    const { expenses, idEdit, setEditable } = this.props;
+    const objSelected = expenses.find((item) => item.id === idEdit);
+    const { value, description, currency, method, tag } = objSelected;
+    setEditable(false);
     this.setState({
       value,
       description,
       currency,
       method,
       tag,
-      id,
     });
   }
 
@@ -97,6 +105,7 @@ class Form extends Component {
         <FormButton
           handleClick={ this.handleClick }
           editButton={ this.editButton }
+          updateExpense={ this.updateExpense }
           state={ this.state }
         />
       </fieldset>
@@ -119,11 +128,14 @@ const mapStateToProps = (state) => ({
   currencies: state.wallet.currencies,
   successApi: state.wallet.successApi,
   expenses: state.wallet.expenses,
-  id: state.wallet.id,
+  idEdit: state.wallet.idEdit,
+  editFormBoolean: state.wallet.editFormBoolean,
 });
 
 const mapDispatchToProps = (dispatch) => ({
   fetchMoedas: (state) => dispatch(fetchAPI(state)),
+  edit: (state) => dispatch(editExpense(state)),
+  setBoolean: (state) => dispatch(editForm(state)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Form);

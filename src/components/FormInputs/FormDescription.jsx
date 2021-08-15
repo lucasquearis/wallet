@@ -8,6 +8,7 @@ class FormDescription extends Component {
       <label htmlFor="description">
         Descrição:
         <input
+          data-testid="description-input"
           name="description"
           onChange={ handleChange }
           id="description"

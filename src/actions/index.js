@@ -7,6 +7,7 @@ export const GET_API_ERROR = 'GET_API_ERROR';
 export const UPDATE_EXPENSES = 'UPDATE_EXPENSES';
 export const DELETE_EXPENSE = 'DELETE_EXPENSE';
 export const EDIT_FORM = 'EDIT_FORM';
+export const EDIT_EXPENSE = 'EDIT_EXPENSE';
 
 export function userLogin(state) {
   return {
@@ -61,6 +62,13 @@ export function editForm(bool, id) {
     type: EDIT_FORM,
     editFormBoolean: bool,
     idEdit: id,
+  };
+}
+
+export function editExpense(state) {
+  return {
+    type: EDIT_EXPENSE,
+    state,
   };
 }
 

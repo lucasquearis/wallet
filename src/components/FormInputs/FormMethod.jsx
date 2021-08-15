@@ -9,7 +9,13 @@ class FormMethod extends Component {
     return (
       <label htmlFor="method">
         Método de pagamento
-        <select value={ value } name="method" onChange={ handleChange } id="method">
+        <select
+          data-testid="method-input"
+          value={ value }
+          name="method"
+          onChange={ handleChange }
+          id="method"
+        >
           {pagamento
             .map((item, index) => <option key={ index }>{item}</option>)}
         </select>

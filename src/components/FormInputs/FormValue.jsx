@@ -8,6 +8,7 @@ class FormValue extends Component {
       <label htmlFor="value">
         Valor:
         <input
+          data-testid="value-input"
           name="value"
           onChange={ handleChange }
           type="number"

@@ -7,7 +7,13 @@ class FormCurrency extends Component {
     return (
       <label htmlFor="currency">
         Moeda:
-        <select value={ value } name="currency" onChange={ handleChange } id="currency">
+        <select
+          data-testid="currency-input"
+          value={ value }
+          name="currency"
+          onChange={ handleChange }
+          id="currency"
+        >
           {valueInput
             .map((moeda, index) => <option key={ index }>{moeda}</option>)}
         </select>

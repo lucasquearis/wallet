@@ -8,7 +8,13 @@ class FormTag extends Component {
     return (
       <label htmlFor="tag">
         Tag
-        <select value={ value } name="tag" onChange={ handleChange } id="tag">
+        <select
+          data-testid="tag-input"
+          value={ value }
+          name="tag"
+          onChange={ handleChange }
+          id="tag"
+        >
           {tag.map((item, index) => <option key={ index }>{ item }</option>)}
         </select>
       </label>

@@ -7,12 +7,24 @@ import Form from './Form';
 class Table extends Component {
   constructor() {
     super();
+    this.state = {
+      editable: false,
+    };
     this.handleButtonEdit = this.handleButtonEdit.bind(this);
+    this.setEditable = this.setEditable.bind(this);
+  }
+
+  setEditable(bool) {
+    this.setState({
+      editable: bool,
+    });
   }
 
   handleButtonEdit(id) {
     const { edit, editBoolean } = this.props;
-    console.log(id);
+    this.setState({
+      editable: true,
+    });
     edit(!editBoolean, id);
   }
 
@@ -21,7 +33,6 @@ class Table extends Component {
     return (
       <tbody>
         {expenses.map((item) => {
-          // console.log(item.id);
           const { description, tag, method, value } = item;
           const moeda = item.exchangeRates[item.currency].name;
           const cambio = (+item.exchangeRates[item.currency].ask).toFixed(2);
@@ -73,9 +84,10 @@ class Table extends Component {
   }
 
   render() {
+    const { editable } = this.state;
     return (
       <>
-        <Form />
+        <Form editable={ editable } setEditable={ this.setEditable } />
         <table>
           <thead>
             <tr>

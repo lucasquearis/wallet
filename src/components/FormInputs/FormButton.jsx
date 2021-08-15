@@ -4,9 +4,12 @@ import { connect } from 'react-redux';
 
 class FormButton extends Component {
   render() {
-    const { editBoolean, handleClick, editButton } = this.props;
+    const { editBoolean, handleClick, updateExpense } = this.props;
     return (
-      <button onClick={ editBoolean ? editButton : handleClick } type="button">
+      <button
+        onClick={ editBoolean ? updateExpense : handleClick }
+        type="button"
+      >
         {editBoolean ? 'Editar despesa' : 'Adicionar despesas'}
       </button>
     );

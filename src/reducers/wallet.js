@@ -6,6 +6,7 @@ import {
   GET_API_ERROR,
   GET_API_SUCCESS,
   UPDATE_EXPENSES,
+  EDIT_EXPENSE,
 } from '../actions';
 
 const INITIAL_STATE = {
@@ -34,7 +35,6 @@ function wallet(state = INITIAL_STATE, action) {
       error: state.error,
     };
   case UPDATE_EXPENSES:
-    console.log(state.expenses.length);
     return {
       ...state,
       expenses: [...state.expenses, { id: state.expenses.length, ...action.expenses }],
@@ -49,6 +49,16 @@ function wallet(state = INITIAL_STATE, action) {
       ...state,
       editFormBoolean: action.editFormBoolean,
       idEdit: action.idEdit,
+    };
+  case EDIT_EXPENSE:
+    return {
+      ...state,
+      expenses: state.expenses.map((item) => {
+        if (state.idEdit === item.id) {
+          return ({ ...item, ...action.state, exchangeRates: item.exchangeRates });
+        }
+        return item;
+      }),
     };
   default:
     return { ...state };
