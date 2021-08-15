@@ -6,6 +6,7 @@ export const GET_API_SUCCESS = 'GET_API_SUCCESS';
 export const GET_API_ERROR = 'GET_API_ERROR';
 export const UPDATE_EXPENSES = 'UPDATE_EXPENSES';
 export const DELETE_EXPENSE = 'DELETE_EXPENSE';
+export const EDIT_FORM = 'EDIT_FORM';
 
 export function userLogin(state) {
   return {
@@ -52,6 +53,13 @@ export function deleteExpenses(id) {
   return {
     type: DELETE_EXPENSE,
     id,
+  };
+}
+
+export function editForm(task) {
+  return {
+    type: EDIT_FORM,
+    editForm: task,
   };
 }
 

@@ -1,6 +1,7 @@
 // Esse reducer será responsável por tratar o todas as informações relacionadas as despesas
 import {
   DELETE_EXPENSE,
+  EDIT_FORM,
   GET_API,
   GET_API_ERROR,
   GET_API_SUCCESS,
@@ -12,6 +13,7 @@ const INITIAL_STATE = {
   expenses: [],
   error: null,
   id: 0,
+  editForm: false,
 };
 
 function wallet(state = INITIAL_STATE, action) {
@@ -40,6 +42,11 @@ function wallet(state = INITIAL_STATE, action) {
     return {
       ...state,
       expenses: [...state.expenses.filter((item) => action.id !== item.id)],
+    };
+  case EDIT_FORM:
+    return {
+      ...state,
+      editForm: action.editForm,
     };
   default:
     return { ...state };

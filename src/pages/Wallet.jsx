@@ -2,7 +2,6 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { PropTypes } from 'prop-types';
 import Table from '../components/Table';
-import Form from '../components/Form';
 
 class Wallet extends React.Component {
   calculateTransaction() {
@@ -29,7 +28,6 @@ class Wallet extends React.Component {
           </p>
           <p data-testid="header-currency-field">BRL</p>
         </header>
-        <Form />
         <Table />
       </>
     );
