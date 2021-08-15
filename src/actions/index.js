@@ -56,10 +56,11 @@ export function deleteExpenses(id) {
   };
 }
 
-export function editForm(task) {
+export function editForm(bool, id) {
   return {
     type: EDIT_FORM,
-    editForm: task,
+    editFormBoolean: bool,
+    idEdit: id,
   };
 }
 

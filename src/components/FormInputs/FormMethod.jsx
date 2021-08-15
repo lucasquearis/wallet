@@ -3,12 +3,14 @@ import PropTypes from 'prop-types';
 
 class FormMethod extends Component {
   render() {
-    const { valueInput, handleChange } = this.props;
+    const { handleChange, value } = this.props;
+    const pagamento = ['Dinheiro', 'Cartão de crédito', 'Cartão de débito'];
+
     return (
       <label htmlFor="method">
         Método de pagamento
-        <select name="method" onChange={ handleChange } id="method">
-          {valueInput
+        <select value={ value } name="method" onChange={ handleChange } id="method">
+          {pagamento
             .map((item, index) => <option key={ index }>{item}</option>)}
         </select>
       </label>

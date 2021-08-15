@@ -4,17 +4,17 @@ import { connect } from 'react-redux';
 
 class FormButton extends Component {
   render() {
-    const { editBoolean, handleClick } = this.props;
+    const { editBoolean, handleClick, editButton } = this.props;
     return (
-      <button onClick={ handleClick } type="button">
-        {editBoolean ? 'Editar Gasto' : 'Adicionar despesas'}
+      <button onClick={ editBoolean ? editButton : handleClick } type="button">
+        {editBoolean ? 'Editar despesa' : 'Adicionar despesas'}
       </button>
     );
   }
 }
 
 const mapStateToProps = (state) => ({
-  editBoolean: state.wallet.editForm,
+  editBoolean: state.wallet.editFormBoolean,
 });
 
 FormButton.propTypes = {

@@ -3,11 +3,11 @@ import PropTypes from 'prop-types';
 
 class FormCurrency extends Component {
   render() {
-    const { valueInput, handleChange } = this.props;
+    const { valueInput, handleChange, value } = this.props;
     return (
       <label htmlFor="currency">
         Moeda:
-        <select name="currency" onChange={ handleChange } id="currency">
+        <select value={ value } name="currency" onChange={ handleChange } id="currency">
           {valueInput
             .map((moeda, index) => <option key={ index }>{moeda}</option>)}
         </select>

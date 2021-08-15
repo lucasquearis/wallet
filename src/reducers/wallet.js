@@ -12,8 +12,8 @@ const INITIAL_STATE = {
   currencies: [],
   expenses: [],
   error: null,
-  id: 0,
-  editForm: false,
+  idEdit: 0,
+  editFormBoolean: false,
 };
 
 function wallet(state = INITIAL_STATE, action) {
@@ -34,6 +34,7 @@ function wallet(state = INITIAL_STATE, action) {
       error: state.error,
     };
   case UPDATE_EXPENSES:
+    console.log(state.expenses.length);
     return {
       ...state,
       expenses: [...state.expenses, { id: state.expenses.length, ...action.expenses }],
@@ -46,7 +47,8 @@ function wallet(state = INITIAL_STATE, action) {
   case EDIT_FORM:
     return {
       ...state,
-      editForm: action.editForm,
+      editFormBoolean: action.editFormBoolean,
+      idEdit: action.idEdit,
     };
   default:
     return { ...state };

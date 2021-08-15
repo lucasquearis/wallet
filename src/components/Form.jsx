@@ -18,10 +18,12 @@ class Form extends Component {
       currency: 'USD',
       method: 'Dinheiro',
       tag: 'Alimentação',
+      id: 0,
     };
     this.handleChange = this.handleChange.bind(this);
     this.renderForm = this.renderForm.bind(this);
     this.handleClick = this.handleClick.bind(this);
+    this.editButton = this.editButton.bind(this);
   }
 
   componentDidMount() {
@@ -45,13 +47,29 @@ class Form extends Component {
     this.setState({
       value: 0,
       description: '',
+      currency: 'USD',
+      method: 'Dinheiro',
+      tag: 'Alimentação',
+      id: 0,
+    });
+  }
+
+  editButton() {
+    const { expenses, id: idRedux } = this.props;
+    const objSelected = expenses.find((item) => item.id === idRedux);
+    const { value, description, currency, method, tag, id } = objSelected;
+    this.setState({
+      value,
+      description,
+      currency,
+      method,
+      tag,
+      id,
     });
   }
 
   renderForm() {
-    const pagamento = ['Dinheiro', 'Cartão de crédito', 'Cartão de débito'];
-    const tag = ['Alimentação', 'Lazer', 'Trabalho', 'Transporte', 'Saúde'];
-    const { description, value } = this.state;
+    const { description, value, currency, method, tag } = this.state;
     const { currencies } = this.props;
     return (
       <fieldset>
@@ -66,16 +84,21 @@ class Form extends Component {
         <FormCurrency
           valueInput={ currencies }
           handleChange={ this.handleChange }
+          value={ currency }
         />
         <FormMethod
-          valueInput={ pagamento }
           handleChange={ this.handleChange }
+          value={ method }
         />
         <FormTag
-          valueInput={ tag }
           handleChange={ this.handleChange }
+          value={ tag }
         />
-        <FormButton handleClick={ this.handleClick } state={ this.state } />
+        <FormButton
+          handleClick={ this.handleClick }
+          editButton={ this.editButton }
+          state={ this.state }
+        />
       </fieldset>
     );
   }
@@ -93,10 +116,10 @@ Form.propTypes = {
 }.isRequired;
 
 const mapStateToProps = (state) => ({
-  isLoading: state.wallet.isLoading,
   currencies: state.wallet.currencies,
   successApi: state.wallet.successApi,
-  editBoolean: state.wallet.editForm,
+  expenses: state.wallet.expenses,
+  id: state.wallet.id,
 });
 
 const mapDispatchToProps = (dispatch) => ({

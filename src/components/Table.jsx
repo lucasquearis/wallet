@@ -5,11 +5,23 @@ import { deleteExpenses, editForm } from '../actions';
 import Form from './Form';
 
 class Table extends Component {
+  constructor() {
+    super();
+    this.handleButtonEdit = this.handleButtonEdit.bind(this);
+  }
+
+  handleButtonEdit(id) {
+    const { edit, editBoolean } = this.props;
+    console.log(id);
+    edit(!editBoolean, id);
+  }
+
   tableBody() {
-    const { expenses, del, edit, editBoolean } = this.props;
+    const { expenses, del, editBoolean } = this.props;
     return (
       <tbody>
         {expenses.map((item) => {
+          // console.log(item.id);
           const { description, tag, method, value } = item;
           const moeda = item.exchangeRates[item.currency].name;
           const cambio = (+item.exchangeRates[item.currency].ask).toFixed(2);
@@ -38,7 +50,7 @@ class Table extends Component {
                   data-testid="edit-btn"
                   type="button"
                   disabled={ editBoolean }
-                  onClick={ () => edit(!editBoolean) }
+                  onClick={ () => this.handleButtonEdit(item.id) }
                 >
                   Editar
                 </button>
@@ -87,13 +99,13 @@ class Table extends Component {
 
 const mapStateToProps = (state) => ({
   expenses: state.wallet.expenses,
-  editBoolean: state.wallet.editForm,
+  editBoolean: state.wallet.editFormBoolean,
   currencies: state.wallet.currencies,
 });
 
 const mapDispatchToProps = (dispatch) => ({
   del: (task) => dispatch(deleteExpenses(task)),
-  edit: (task) => dispatch(editForm(task)),
+  edit: (task, id) => dispatch(editForm(task, id)),
 });
 
 Table.propTypes = {

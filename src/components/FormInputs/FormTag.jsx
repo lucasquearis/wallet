@@ -3,12 +3,13 @@ import PropTypes from 'prop-types';
 
 class FormTag extends Component {
   render() {
-    const { valueInput, handleChange } = this.props;
+    const { handleChange, value } = this.props;
+    const tag = ['Alimentação', 'Lazer', 'Trabalho', 'Transporte', 'Saúde'];
     return (
       <label htmlFor="tag">
         Tag
-        <select name="tag" onChange={ handleChange } id="tag">
-          {valueInput.map((item, index) => <option key={ index }>{ item }</option>)}
+        <select value={ value } name="tag" onChange={ handleChange } id="tag">
+          {tag.map((item, index) => <option key={ index }>{ item }</option>)}
         </select>
       </label>
     );
