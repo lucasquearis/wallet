@@ -8,7 +8,6 @@ import FormDescription from './FormInputs/FormDescription';
 import FormCurrency from './FormInputs/FormCurrency';
 import FormMethod from './FormInputs/FormMethod';
 import FormTag from './FormInputs/FormTag';
-import './Form.css';
 
 const INITIAL_STATE = {
   value: 0,

@@ -2,7 +2,6 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { PropTypes } from 'prop-types';
 import Table from '../components/Table';
-import './Wallet.css';
 
 class Wallet extends React.Component {
   calculateTransaction() {

@@ -3,7 +3,6 @@ import { PropTypes } from 'prop-types';
 import { connect } from 'react-redux';
 import { deleteExpenses, editForm } from '../actions';
 import Form from './Form';
-import './Table.css';
 
 class Table extends Component {
   constructor() {
