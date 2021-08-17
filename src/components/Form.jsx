@@ -15,7 +15,6 @@ const INITIAL_STATE = {
   currency: 'USD',
   method: 'Dinheiro',
   tag: 'Alimentação',
-  editFormColor: false,
 };
 class Form extends Component {
   constructor() {
