@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { userLogin } from '../actions';
+import './Login.css';
 
 class Login extends Component {
   constructor(props) {
@@ -52,36 +53,38 @@ class Login extends Component {
   render() {
     const { email, password } = this.state;
     return (
-      <fieldset>
-        <label htmlFor="email-input">
-          Email:
-          <input
-            name="email"
-            data-testid="email-input"
-            onChange={ this.handleChange }
-            value={ email }
-          />
-        </label>
-        <label htmlFor="password-input">
-          Senha:
-          <input
-            name="password"
-            type="password"
-            data-testid="password-input"
-            onChange={ this.handleChange }
-            value={ password }
-          />
-        </label>
-        <Link to="/carteira">
-          <button
-            type="button"
-            disabled={ !this.checkLogin() }
-            onClick={ this.handleClick }
-          >
-            Entrar
-          </button>
-        </Link>
-      </fieldset>
+      <div className="div-login">
+        <fieldset className="fieldset-login">
+          <label htmlFor="email-input">
+            Email:
+            <input
+              name="email"
+              data-testid="email-input"
+              onChange={ this.handleChange }
+              value={ email }
+            />
+          </label>
+          <label htmlFor="password-input">
+            Senha:
+            <input
+              name="password"
+              type="password"
+              data-testid="password-input"
+              onChange={ this.handleChange }
+              value={ password }
+            />
+          </label>
+          <Link to="/carteira">
+            <button
+              type="button"
+              disabled={ !this.checkLogin() }
+              onClick={ this.handleClick }
+            >
+              Entrar
+            </button>
+          </Link>
+        </fieldset>
+      </div>
     );
   }
 }

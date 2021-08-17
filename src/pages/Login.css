@@ -1,0 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@1,300&display=swap');
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #F2F2F2;
+  font-family: 'Lato', sans-serif;
+  box-sizing: border-box;
+  color: #202426;
+}
+
+.div-login {
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+}
+
+.fieldset-login {
+  background-color: #8C8C88;
+  width: 500px;
+  height: 250px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}

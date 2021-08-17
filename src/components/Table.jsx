@@ -3,6 +3,7 @@ import { PropTypes } from 'prop-types';
 import { connect } from 'react-redux';
 import { deleteExpenses, editForm } from '../actions';
 import Form from './Form';
+import './Table.css';
 
 class Table extends Component {
   constructor() {
@@ -86,9 +87,9 @@ class Table extends Component {
   render() {
     const { editable } = this.state;
     return (
-      <>
+      <div>
         <Form editable={ editable } setEditable={ this.setEditable } />
-        <table>
+        <table className="table">
           <thead>
             <tr>
               <th>Descrição</th>
@@ -104,7 +105,7 @@ class Table extends Component {
           </thead>
           {this.tableBody()}
         </table>
-      </>
+      </div>
     );
   }
 }

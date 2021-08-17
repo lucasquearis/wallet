@@ -8,6 +8,7 @@ import FormDescription from './FormInputs/FormDescription';
 import FormCurrency from './FormInputs/FormCurrency';
 import FormMethod from './FormInputs/FormMethod';
 import FormTag from './FormInputs/FormTag';
+import './Form.css';
 
 const INITIAL_STATE = {
   value: 0,
@@ -15,6 +16,7 @@ const INITIAL_STATE = {
   currency: 'USD',
   method: 'Dinheiro',
   tag: 'Alimentação',
+  editFormColor: false,
 };
 class Form extends Component {
   constructor() {
@@ -37,6 +39,14 @@ class Form extends Component {
     if (editable) {
       this.editButton();
     }
+  }
+
+  setColorForm() {
+    const { editFormBoolean } = this.props;
+    if (editFormBoolean) {
+      return 'fieldset-form-edit';
+    }
+    return 'fieldset-form';
   }
 
   handleChange({ target }) {
@@ -80,7 +90,7 @@ class Form extends Component {
     const { description, value, currency, method, tag } = this.state;
     const { currencies } = this.props;
     return (
-      <fieldset>
+      <fieldset className={ this.setColorForm() }>
         <FormValue
           valueInput={ value }
           handleChange={ this.handleChange }

@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { PropTypes } from 'prop-types';
 import Table from '../components/Table';
+import './Wallet.css';
 
 class Wallet extends React.Component {
   calculateTransaction() {
@@ -13,23 +14,35 @@ class Wallet extends React.Component {
   }
 
   render() {
+    const ZERO_EXPENSE = <p data-testid="total-field">{ `Despesa total: ${0}` }</p>;
+    const AT_LEAST_ONE_EXPENSE = (
+      <p data-testid="total-field">
+        {`Despesa total: ${this.calculateTransaction()
+          .toFixed(2)}`}
+      </p>
+    );
     this.calculateTransaction();
     const { email, expenses } = this.props;
     return (
-      <>
-        <header>
-          <p data-testid="email-field">{ email }</p>
-          <p data-testid="total-field">
+      <main className="main-container">
+        <header className="header-main">
+          <div className="div-info-header">
+            <p>Email: </p>
+            <p data-testid="email-field">{ email }</p>
+          </div>
+          <div className="div-info-header">
             {
               expenses.length > 0
-                ? `Despesa total: ${this.calculateTransaction()
-                  .toFixed(2)}` : `Despesa total: ${0}`
+                ? AT_LEAST_ONE_EXPENSE
+                : ZERO_EXPENSE
             }
-          </p>
-          <p data-testid="header-currency-field">BRL</p>
+          </div>
+          <div className="div-info-header">
+            <p data-testid="header-currency-field">Moeda Atual: BRL</p>
+          </div>
         </header>
         <Table />
-      </>
+      </main>
     );
   }
 }
