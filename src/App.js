@@ -14,7 +14,6 @@ class App extends Component {
           <Home />
         </Route>
         <Route
-          exact
           path="/wallet/carteira"
         >
           <Wallet />
