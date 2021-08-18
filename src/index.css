@@ -11,3 +11,65 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@1,300&display=swap');
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #f2f2f2;
+  font-family: Lato, sans-serif;
+  box-sizing: border-box;
+  color: #202426;
+}
+
+.div-login {
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+}
+
+.fieldset-login {
+  background-color: #8c8c88;
+  width: 500px;
+  height: 250px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.main-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.header-main {
+  font-size: 20px;
+  color: #202426;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.div-info-header {
+  color: #9da65d;
+  display: flex;
+  padding: 0px 100px;
+}
+
+.fieldset-form {
+  background-color: #8c8c88;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.fieldset-form-edit {
+  background-color: #9da65d;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
