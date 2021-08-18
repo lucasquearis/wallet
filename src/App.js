@@ -9,13 +9,13 @@ class App extends Component {
       <Switch>
         <Route
           exact
-          path="/"
+          path="/wallet"
         >
           <Home />
         </Route>
         <Route
           exact
-          path="/carteira"
+          path="/wallet/carteira"
         >
           <Wallet />
         </Route>
