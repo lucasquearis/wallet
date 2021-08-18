@@ -73,7 +73,7 @@ class Login extends Component {
               value={ password }
             />
           </label>
-          <Link to="/carteira">
+          <Link to="/wallet/carteira">
             <button
               type="button"
               disabled={ !this.checkLogin() }
