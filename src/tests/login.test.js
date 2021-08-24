@@ -15,11 +15,11 @@ afterEach(() => jest.clearAllMocks());
 describe('1 - Crie uma página inicial de login com os seguintes campos e características:', () => {
   test('A rota para esta página deve ser \'/\'', () => {
     const { history } = renderWithRouterAndStore(<App />, '/');
-    expect(history.location.pathname).toBe('/');
+    expect(history.location.pathname).toBe('/wallet');
   });
 
   test('Crie um local para que o usuário insira seu email e senha', () => {
-    renderWithRouterAndStore(<App />, '/');
+    renderWithRouterAndStore(<App />, '/wallet');
     const email = screen.getByTestId(EMAIL_INPUT_TEST_ID);
     const senha = screen.getByTestId(PASSWORD_INPUT_TEST_ID);
 
@@ -116,6 +116,6 @@ describe('3 - Utilize o Redux para salvar no estado global as informações da p
     userEvent.type(senha, VALID_PASSWORD);
     fireEvent.click(button);
 
-    expect(history.location.pathname).toBe('/carteira');
+    expect(history.location.pathname).toBe('/wallet/carteira');
   });
 });
