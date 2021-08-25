@@ -37,7 +37,10 @@ class Wallet extends React.Component {
             }
           </div>
           <div className="div-info-header">
-            <p data-testid="header-currency-field">Moeda Atual: BRL</p>
+            <p data-testid="header-currency-field">
+              Moeda Atual:
+              BRL
+            </p>
           </div>
         </header>
         <Table />

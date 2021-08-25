@@ -7,6 +7,7 @@ class FormButton extends Component {
     const { editBoolean, handleClick, updateExpense } = this.props;
     return (
       <button
+        className="pure-button"
         onClick={ editBoolean ? updateExpense : handleClick }
         type="button"
       >

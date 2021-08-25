@@ -39,7 +39,7 @@ class Table extends Component {
           const valor = ((item.value)
           * (item.exchangeRates[item.currency].ask)).toFixed(2);
           return (
-            <tr key={ item.id }>
+            <tr className="pure-table-odd" key={ item.id }>
               <td>{description}</td>
               <td>{tag}</td>
               <td>{method}</td>
@@ -88,9 +88,9 @@ class Table extends Component {
     return (
       <div>
         <Form editable={ editable } setEditable={ this.setEditable } />
-        <table className="table">
+        <table className="pure-table-horizontal">
           <thead>
-            <tr>
+            <tr className="pure-table-odd">
               <th>Descrição</th>
               <th>Tag</th>
               <th>Método de pagamento</th>

@@ -23,21 +23,38 @@ body {
   color: #202426;
 }
 
+.title {
+  font-size: 50px;
+  text-align: center;
+}
+
+.footer {
+  text-align: center;
+}
+
+.login-page{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
 .div-login {
   display: flex;
   height: 100vh;
-  justify-content: center;
+  justify-content: left;
   align-items: center;
 }
 
 .fieldset-login {
   background-color: #8c8c88;
-  width: 500px;
-  height: 250px;
+  width: 612px;
+  height: 408px;
   display: flex;
   justify-content: center;
   flex-direction: column;
   align-items: center;
+  gap: 20px;
 }
 
 .main-container {
@@ -46,7 +63,7 @@ body {
   align-items: center;
 }
 .header-main {
-  font-size: 20px;
+  font-size: 30px;
   color: #202426;
   display: flex;
   flex-direction: row;
@@ -63,7 +80,7 @@ body {
   background-color: #8c8c88;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
 }
 
 .fieldset-form-edit {
@@ -73,3 +90,22 @@ body {
   justify-content: center;
 }
 
+.pure-form, .table {
+  text-align: center;
+}
+
+label {
+  margin: 0 100px;
+  font-size: large;
+}
+
+table th {
+  width: 100vh;
+  text-align: center;
+  margin: 30px auto;
+  font-size: large;
+}
+td {
+  text-align: center;
+  font-size: large;
+}

@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { userLogin } from '../actions';
+import loginHero from '../images/executivo2.jpg';
 
 class Login extends Component {
   constructor(props) {
@@ -52,37 +53,43 @@ class Login extends Component {
   render() {
     const { email, password } = this.state;
     return (
-      <div className="div-login">
-        <fieldset className="fieldset-login">
-          <label htmlFor="email-input">
-            Email:
-            <input
-              name="email"
-              data-testid="email-input"
-              onChange={ this.handleChange }
-              value={ email }
-            />
-          </label>
-          <label htmlFor="password-input">
-            Senha:
-            <input
-              name="password"
-              type="password"
-              data-testid="password-input"
-              onChange={ this.handleChange }
-              value={ password }
-            />
-          </label>
-          <Link to="/wallet/carteira">
-            <button
-              type="button"
-              disabled={ !this.checkLogin() }
-              onClick={ this.handleClick }
-            >
-              Entrar
-            </button>
-          </Link>
-        </fieldset>
+      <div className="login-page">
+        <form className="pure-form">
+          <fieldset>
+            <label htmlFor="email-input">
+              Email:
+              <input
+                name="email"
+                data-testid="email-input"
+                onChange={ this.handleChange }
+                value={ email }
+              />
+            </label>
+            <label htmlFor="password-input">
+              Senha:
+              <input
+                name="password"
+                type="password"
+                data-testid="password-input"
+                onChange={ this.handleChange }
+                value={ password }
+              />
+            </label>
+            <Link to="/wallet/carteira">
+              <button
+                className="pure-button"
+                type="button"
+                disabled={ !this.checkLogin() }
+                onClick={ this.handleClick }
+              >
+                Entrar
+              </button>
+            </Link>
+          </fieldset>
+        </form>
+        <div>
+          <img src={ loginHero } alt="executivo" />
+        </div>
       </div>
     );
   }

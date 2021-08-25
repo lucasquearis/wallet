@@ -88,35 +88,37 @@ class Form extends Component {
     const { description, value, currency, method, tag } = this.state;
     const { currencies } = this.props;
     return (
-      <fieldset className={ this.setColorForm() }>
-        <FormValue
-          valueInput={ value }
-          handleChange={ this.handleChange }
-        />
-        <FormDescription
-          valueInput={ description }
-          handleChange={ this.handleChange }
-        />
-        <FormCurrency
-          valueInput={ currencies }
-          handleChange={ this.handleChange }
-          value={ currency }
-        />
-        <FormMethod
-          handleChange={ this.handleChange }
-          value={ method }
-        />
-        <FormTag
-          handleChange={ this.handleChange }
-          value={ tag }
-        />
-        <FormButton
-          handleClick={ this.handleClick }
-          editButton={ this.editButton }
-          updateExpense={ this.updateExpense }
-          state={ this.state }
-        />
-      </fieldset>
+      <form className="pure-form">
+        <fieldset className={ this.setColorForm() }>
+          <FormValue
+            valueInput={ value }
+            handleChange={ this.handleChange }
+          />
+          <FormDescription
+            valueInput={ description }
+            handleChange={ this.handleChange }
+          />
+          <FormCurrency
+            valueInput={ currencies }
+            handleChange={ this.handleChange }
+            value={ currency }
+          />
+          <FormMethod
+            handleChange={ this.handleChange }
+            value={ method }
+          />
+          <FormTag
+            handleChange={ this.handleChange }
+            value={ tag }
+          />
+          <FormButton
+            handleClick={ this.handleClick }
+            editButton={ this.editButton }
+            updateExpense={ this.updateExpense }
+            state={ this.state }
+          />
+        </fieldset>
+      </form>
     );
   }
 
