@@ -93,7 +93,7 @@ body, html {
   background-color: #9da65d;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content:space-evenly;
 }
 
 .pure-form, .table {
