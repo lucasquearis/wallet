@@ -1,5 +1,6 @@
 import React from 'react';
 import Login from './Login';
+import Footer from '../components/Footer';
 
 class Home extends React.Component {
   render() {
@@ -7,11 +8,7 @@ class Home extends React.Component {
       <>
         <h1 className="title">Wallet Online, sua carteira digital!</h1>
         <Login />
-        <footer className="footer">
-          <p>
-            Lucas A. Santos
-          </p>
-        </footer>
+        <Footer />
       </>
     );
   }

@@ -1,5 +1,4 @@
 body {
-  margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
@@ -14,10 +13,14 @@ code {
 
 @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@1,300&display=swap');
 
-body {
+body, html {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
   margin: 0;
   padding: 0;
-  background-color: #f2f2f2;
+  min-height: 100%;
+  background-color: #f6f6f6;
   font-family: Lato, sans-serif;
   box-sizing: border-box;
   color: #202426;
@@ -29,7 +32,10 @@ body {
 }
 
 .footer {
+  position: fixed;
   text-align: center;
+  bottom: 0;
+  right: 50%;
 }
 
 .login-page{

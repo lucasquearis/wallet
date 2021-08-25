@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { userLogin } from '../actions';
-import loginHero from '../images/executivo2.jpg';
+import loginHero from '../images/carteira.png';
 
 class Login extends Component {
   constructor(props) {
@@ -55,7 +55,7 @@ class Login extends Component {
     return (
       <div className="login-page">
         <form className="pure-form">
-          <fieldset>
+          <fieldset className="fieldset-login">
             <label htmlFor="email-input">
               Email:
               <input

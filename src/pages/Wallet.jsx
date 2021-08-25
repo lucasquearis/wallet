@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { PropTypes } from 'prop-types';
 import Table from '../components/Table';
+import Footer from '../components/Footer';
 
 class Wallet extends React.Component {
   calculateTransaction() {
@@ -23,28 +24,31 @@ class Wallet extends React.Component {
     this.calculateTransaction();
     const { email, expenses } = this.props;
     return (
-      <main className="main-container">
-        <header className="header-main">
-          <div className="div-info-header">
-            <p>Email: </p>
-            <p data-testid="email-field">{ email }</p>
-          </div>
-          <div className="div-info-header">
-            {
-              expenses.length > 0
-                ? AT_LEAST_ONE_EXPENSE
-                : ZERO_EXPENSE
-            }
-          </div>
-          <div className="div-info-header">
-            <p data-testid="header-currency-field">
-              Moeda Atual:
-              BRL
-            </p>
-          </div>
-        </header>
-        <Table />
-      </main>
+      <>
+        <main className="main-container">
+          <header className="header-main">
+            <div className="div-info-header">
+              <p>Email: </p>
+              <p data-testid="email-field">{ email }</p>
+            </div>
+            <div className="div-info-header">
+              {
+                expenses.length > 0
+                  ? AT_LEAST_ONE_EXPENSE
+                  : ZERO_EXPENSE
+              }
+            </div>
+            <div className="div-info-header">
+              <p data-testid="header-currency-field">
+                Moeda Atual:
+                BRL
+              </p>
+            </div>
+          </header>
+          <Table />
+        </main>
+        <Footer />
+      </>
     );
   }
 }
